@@ -1,7 +1,5 @@
-// GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
 
-// Initialize contact section visibility immediately when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   const contactSection = document.querySelector(".contact-section");
   if (contactSection) {
@@ -29,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Navbar scroll effect
 window.addEventListener("scroll", () => {
   const navbar = document.querySelector(".navbar");
   if (window.scrollY > 50) {
@@ -39,7 +36,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Mobile menu toggle
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 const navLinks = document.querySelectorAll(".nav-link");
@@ -56,7 +52,6 @@ navLinks.forEach((link) => {
   });
 });
 
-// Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -71,7 +66,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Hero animations
 const tl = gsap.timeline();
 
 tl.from(".greeting", {
@@ -131,7 +125,6 @@ tl.from(".greeting", {
     "-=0.4"
   );
 
-// Floating orbs animation
 gsap.to(".orb-1", {
   x: 100,
   y: 100,
@@ -159,11 +152,9 @@ gsap.to(".orb-3", {
   ease: "sine.inOut",
 });
 
-// Section animations - ensure all sections are visible
 gsap.utils.toArray("section").forEach((section, index) => {
   if (index === 0) return; // Skip hero section
 
-  // Ensure section is visible
   gsap.set(section, { opacity: 1, visibility: "visible" });
 
   const header = section.querySelector(".section-header");
@@ -184,7 +175,6 @@ gsap.utils.toArray("section").forEach((section, index) => {
   }
 });
 
-// About section animation
 gsap.from(".about-intro", {
   opacity: 0,
   x: -50,
@@ -219,7 +209,6 @@ gsap.from(".about-stats", {
   },
 });
 
-// Skills section animation - ensure visibility
 gsap.set(".skills-section", {
   opacity: 1,
   visibility: "visible",
@@ -228,7 +217,6 @@ gsap.set(".skills-section", {
 gsap.set(".skill-category", { opacity: 1, visibility: "visible" });
 gsap.set(".skills-grid", { opacity: 1, visibility: "visible" });
 
-// Animate skill categories on scroll
 gsap.from(".skill-category", {
   opacity: 0.3,
   y: 50,
@@ -244,7 +232,6 @@ gsap.from(".skill-category", {
   },
 });
 
-// Animate skill bars - ensure they animate properly
 const skillBars = document.querySelectorAll(".skill-progress");
 if (skillBars.length > 0) {
   skillBars.forEach((bar, index) => {
@@ -269,7 +256,6 @@ if (skillBars.length > 0) {
   });
 }
 
-// Projects section animation - ensure visibility
 gsap.set(".projects-section", {
   opacity: 1,
   visibility: "visible",
@@ -278,7 +264,6 @@ gsap.set(".projects-section", {
 gsap.set(".project-card", { opacity: 1, visibility: "visible" });
 gsap.set(".projects-grid", { opacity: 1, visibility: "visible" });
 
-// Animate project cards on scroll
 gsap.from(".project-card", {
   opacity: 0.3,
   y: 50,
@@ -294,7 +279,6 @@ gsap.from(".project-card", {
   },
 });
 
-// Contact section animation - ensure visibility first (run immediately)
 (function () {
   gsap.set(".contact-section", {
     opacity: 1,
@@ -306,7 +290,6 @@ gsap.from(".project-card", {
   gsap.set(".contact-method", { opacity: 1, visibility: "visible", x: 0 });
   gsap.set(".contact-methods", { opacity: 1, visibility: "visible" });
 
-  // Also set via DOM immediately for faster rendering
   const contactSection = document.querySelector(".contact-section");
   if (contactSection) {
     contactSection.style.opacity = "1";
@@ -322,7 +305,6 @@ gsap.from(".project-card", {
   }
 })();
 
-// Contact section animation - faster and earlier trigger
 gsap.from(".contact-info", {
   opacity: 0.3,
   x: -30,
@@ -351,7 +333,6 @@ gsap.from(".contact-form", {
   },
 });
 
-// Contact methods - faster animation with earlier trigger
 gsap.from(".contact-method", {
   opacity: 0.4,
   x: -20,
@@ -367,12 +348,10 @@ gsap.from(".contact-method", {
   },
 });
 
-// Contact form submission
 const contactForm = document.querySelector(".contact-form");
 contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Simple form validation
   const inputs = contactForm.querySelectorAll("input, textarea");
   let isValid = true;
 
@@ -386,7 +365,6 @@ contactForm.addEventListener("submit", (e) => {
   });
 
   if (isValid) {
-    // Show success message (you can replace this with actual form submission)
     const btn = contactForm.querySelector("button");
     const originalText = btn.innerHTML;
     btn.innerHTML =
@@ -404,7 +382,6 @@ contactForm.addEventListener("submit", (e) => {
   }
 });
 
-// Parallax effect for hero image
 gsap.to(".hero-image", {
   y: -50,
   scrollTrigger: {
@@ -415,7 +392,6 @@ gsap.to(".hero-image", {
   },
 });
 
-// Cursor effect (optional enhancement)
 document.addEventListener("mousemove", (e) => {
   const cursor = document.querySelector(".custom-cursor");
   if (cursor) {
@@ -428,18 +404,14 @@ document.addEventListener("mousemove", (e) => {
   }
 });
 
-// Initialize opacity for fade-in
 gsap.set("body", { opacity: 1 });
 
-// Add loading animation and ensure all sections are visible on load
 window.addEventListener("load", () => {
-  // Fade in body
   gsap.to("body", {
     opacity: 1,
     duration: 0.5,
   });
 
-  // Force visibility of skills and projects sections
   const skillsSection = document.querySelector(".skills-section");
   const projectsSection = document.querySelector(".projects-section");
 
@@ -448,7 +420,6 @@ window.addEventListener("load", () => {
     skillsSection.style.visibility = "visible";
     skillsSection.style.display = "block";
 
-    // Ensure all children are visible
     const skillCategories = skillsSection.querySelectorAll(".skill-category");
     skillCategories.forEach((card) => {
       card.style.opacity = "1";
@@ -461,7 +432,6 @@ window.addEventListener("load", () => {
     projectsSection.style.visibility = "visible";
     projectsSection.style.display = "block";
 
-    // Ensure all children are visible
     const projectCards = projectsSection.querySelectorAll(".project-card");
     projectCards.forEach((card) => {
       card.style.opacity = "1";
@@ -469,21 +439,18 @@ window.addEventListener("load", () => {
     });
   }
 
-  // Force visibility of contact section and methods
   const contactSection = document.querySelector(".contact-section");
   if (contactSection) {
     contactSection.style.opacity = "1";
     contactSection.style.visibility = "visible";
     contactSection.style.display = "block";
 
-    // Ensure contact methods are visible immediately
     const contactMethods = contactSection.querySelectorAll(".contact-method");
     contactMethods.forEach((method) => {
       method.style.opacity = "1";
       method.style.visibility = "visible";
     });
 
-    // Ensure contact info and form are visible
     const contactInfo = contactSection.querySelector(".contact-info");
     const contactForm = contactSection.querySelector(".contact-form");
     if (contactInfo) {
@@ -496,6 +463,5 @@ window.addEventListener("load", () => {
     }
   }
 
-  // Refresh ScrollTrigger to ensure animations work
   ScrollTrigger.refresh();
 });
